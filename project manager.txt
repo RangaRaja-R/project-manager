@@ -1,0 +1,36 @@
+project manager
+Front end (ReactJS)
+	not done
+		-plan pages
+		-design
+		-features
+Back end (Django REST)
+	not done
+		-apis
+		-user login system
+		-security
+		-database(cloud)
+		-deployment
+	models
+		user
+		Project:
+		        Title
+		        Description (optional)
+		        Owner (foreign key to the User model)
+		        Created date and time
+		        Due date (optional)
+		        Status (e.g., "Open," "In Progress," "Completed," "Archived")
+		        Visibility (e.g., "Public," "Private") (optional, for collaborative projects)
+		        (optional) Members (ManyToManyField to User for team members)
+		Task:Represents a task within a project
+		        Title
+		        Description
+		        Project (foreign key to the Project model)
+		        Priority (e.g., "High," "Medium," "Low")
+			Difficulty ("high", "medium", "low", "default")
+		        Status (e.g., "To Do," "In Progress," "Completed")
+			(optional)
+		        Estimated duration
+		        Assigned user (foreign key to the User model)
+		        Dependencies (ManyToManyField to Task for task dependencies)
+
