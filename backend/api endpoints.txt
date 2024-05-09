@@ -1,0 +1,61 @@
+/user
+    /- returns whether the user is logged in
+    /<str:att> - returns a specific attribute of the user
+    /register - for creating a new user
+     requires:
+        - name
+        - mail (unique)
+        - password
+    /login - for logging in, stores a token as cookie
+    /logout - for logging out, deletes the stored cookie
+    /delete - for deleting the user
+    /task
+        /create - for creating a new task
+         requires:
+            - owner(id)
+            - task
+         optional:
+            - completion(default=0, 0<=x<=100)
+            - description
+            - deadline
+        /list?owner=id - lists all the tasks(here owner is the user id)
+        /details?id=id - returns details of specific task
+        /update - update existing task
+        /delete?id=id - deletes existing task
+/notes
+    /?owner=id - notes of the given user
+    /update - updates the notes, edits 'content'
+/project
+    /create - create a new project
+     requires:
+        - title
+        - owner(id)
+     optional:
+        - description
+        - due
+        - group(boolean, is group)
+        - members(if group project)
+        - created(auto)
+    /update - update an existing project
+    /delete - deletes an existing project
+    /get?id=id - get details of a project(id of the project)
+    /get-owned?owner=id - get all project owned by user(owner)
+    /task
+        /create - for creating a new task
+         requires:
+            - owner(project id)
+            - title
+         optional:
+            - completion(default=0, 0<=x<=100)
+            - description
+            - deadline
+            - status ("To Do", "In Progress", "Completed")
+            - difficulty ("high", "medium", "low")
+            - priority ("high", "medium", "low")
+            if group project
+            - assigned_by (user id)
+            - assigned_to (user id)
+        /list?owner=id - lists all the tasks(here owner is the user id)
+        /details?id=id - returns details of specific task
+        /update - update existing task
+        /delete?id=id - deletes existing task

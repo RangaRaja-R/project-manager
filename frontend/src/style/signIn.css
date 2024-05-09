@@ -1,0 +1,48 @@
+.signInPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    color: var(--second);
+}
+.signInPage form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.signInPage input {
+    width: 300px;
+    height: 30px;
+    border: 1px solid var(--second);
+    border-radius: 5px;
+    background-color: var(--prime);
+    padding: 0 10px;
+    &:focus {
+        outline: none;
+    }
+}
+.signInPage button {
+    width: 300px;
+    height: 30px;
+}
+.signInPage .error {
+    color: red;
+    font-size: 12px;
+}
+
+.signInPage a {
+    text-decoration: none;
+    color: var(--second);
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.signInPage .logo {
+    width: 100px;
+    height: 100px;
+}

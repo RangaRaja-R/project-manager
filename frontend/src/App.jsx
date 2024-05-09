@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Navbar from "./pages/Navbar";
+import Home from "./pages/Home";
+import Note from "./pages/Note";
+import Tasks from "./pages/Tasks";
+import ProjectList from "./pages/ProjectList";
+import ProjectCreate from "./pages/ProjectCreate";
+import ProjectEdit from "./pages/ProjectEdit";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { user as isLoggedIn } from "./redux/actions/authAction";
+import { getNote, save } from "./redux/actions/noteAction";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const user = useSelector((state) => state.auth.user);
+    const note = useSelector((state) => state.note);
+    const dispatch = useDispatch();
+    const dark = () => {
+        if (!document.body.classList.contains("dark"))
+            document.body.classList.add("dark");
+        else document.body.classList.remove("dark");
+    };
+    useEffect(() => {
+        if (document.cookie.match("(^|;)\\s*" + "user" + "\\s*=\\s*([^;]+)")) {
+            dispatch(isLoggedIn()).then(() => {
+                dispatch(getNote());
+            });
+        }
+    }, []);
+    return (
+        <div>
+            <HashRouter>
+                <Navbar user={user} dark={dark} />
+                <Routes>
+                    <Route index element={<Home />} />
+                    <Route
+                        path="/sign-in"
+                        element={<SignIn loggedIn={user != null} />}
+                    />
+                    <Route
+                        path="/sign-up"
+                        element={<SignUp loggedIn={user != null} />}
+                    />
+                    <Route
+                        path="/tasks"
+                        element={<Tasks loggedIn={user != null} />}
+                    />
+                    <Route
+                        path="/projects"
+                        element={<ProjectList loggedIn={user != null} />}
+                    />
+                    <Route
+                        path="/projects/create"
+                        element={<ProjectCreate />}
+                    />
+                    <Route path="/projects/edit" element={<ProjectEdit />} />
+                </Routes>
+                <Note
+                    note={user == null ? { content: "" } : note}
+                    loggedIn={user != null}
+                    save={(val) => {
+                        dispatch(save({ ...note, content: val }));
+                    }}
+                />
+            </HashRouter>
+        </div>
+    );
 }
 
-export default App
+export default App;

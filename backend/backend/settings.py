@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dia+(r05pluhzwlz+%0@15wqqntqvd+it+it*28w$b3keqi#=v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["http://127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["http://127.0.0.1:8000", "localhost"]
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api',
-    'notes'
+    'note',
+    'project'
 ]
 
 MIDDLEWARE = [

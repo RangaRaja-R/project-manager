@@ -5,10 +5,11 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['id', 'name', 'email', 'password', 'private']
         extra_kwargs = {
             'password': {'write_only': True}
         }
+        partial = True
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -18,3 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = '__all__'
+        partial = True

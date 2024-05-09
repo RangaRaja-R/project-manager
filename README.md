@@ -1,21 +1,41 @@
 # project manager
 ## features:
-- daily task scheduling
+- personal task scheduling
 - projects with tasks inside it
-- seperate tasks
 - notes
+v2
+- chatting among team members
+- file sharing
 ## Front end (ReactJS)
 not done
 - plan pages
 - design
 - features
+prime color options
+-#9361A7
+ -with white - #53355F
+ -with black - #C5AACF
+### Pages
+- sign in
+- sign up
+- home(should say something about project with nav bar)
+- navbar
+ - name of app on left
+ - name of user on right(sign buttons if not logged in)
+- Note(in side, like menu bar)
+- Tasks(in seperate side-bar as my tasks, like vs-code explorer)
+- list of all project
+- project home
+- has task list, members(if group)
 ## Back end (Django REST)
 not done
-- apis
-- user login system
-- security
+- apis(80%)
 - database(cloud)
 - deployment
+done
+- user login system
+- security(JWT authentication)
+
 ### models
 **User:**
 - Tasks
@@ -27,23 +47,21 @@ not done
 - Owner (foreign key to the User model)
 - Created date and time
 - Due date (optional)
-- Status (e.g., "Open," "In Progress," "Completed," "Archived")
-- Visibility (e.g., "Public," "Private") (optional, for collaborative projects)
 - Tasks(List of foreign key Task model)
-_(optional)_
 - Members (ManyToManyField to User for team members)
 
 **Task: for each user**
 - Title
 - Description
-- Status (e.g., "To Do," "In Progress," "Completed")
 - Deadline (Last date to complete task)
 - completion percentage
+- owner (user who created)
 
 _+for task inside projects(common for people in project)_
-- Project (foreign key to the Project model)(optional)
+- owner (foreign key to the Project model)(optional)
 - Priority (e.g., "High," "Medium," "Low")
 - Difficulty ("high", "medium", "low", "default")
+- status (e.g., "To do," "In progress," "Done")
 
 _+if group project:_
 - Assigned by (foreign key to the User model)
@@ -51,29 +69,28 @@ _+if group project:_
 
 _(optional)_
 - Estimated duration
-- Category("bug", "feature", "page")
 - Dependencies (ManyToManyField to Task for task dependencies)
 
-**Notes:(seperate for users)**
+**Notes:separate for users**
 - text
 - creation date
-- project
 
 ## phase 1: Planning
-- features planing
+- features planing - done
 ## phase 2: Backend
-- models
-- serializers
+- models - done
+- serializers - done
 - views
 - urls
 - database
-- authentication
+- authentication - done
 - testing(after every steps)
 ## phase 3: Frontend
 - plan pages
-- design cards
 - basic page
 - API test
+(ask pradosh)
+- design cards 
 - start designing
 ## phase 4: deployment
 - use docker
