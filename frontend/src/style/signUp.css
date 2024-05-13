@@ -5,7 +5,6 @@
     flex-direction: column;
     text-align: center;
     height: 100vh;
-    color: var(--second);
 }
 .signUpPage form {
     display: flex;
@@ -17,9 +16,9 @@
 .signUpPage input {
     width: 300px;
     height: 30px;
-    border: 1px solid var(--second);
+    border: 1px solid rgb(var(--second));
     border-radius: 5px;
-    background-color: var(--prime);
+    background-color: rgb(var(--prime));
     padding: 0 10px;
     &:focus {
         outline: none;
@@ -36,7 +35,6 @@
 
 .signUpPage a {
     text-decoration: none;
-    color: var(--second);
     &:hover {
         text-decoration: underline;
     }

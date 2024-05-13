@@ -57,6 +57,12 @@ export const signIn = (data) => async (dispatch) => {
 };
 
 export const signUp = (data) => async (dispatch) => {
+    if (data.name == "myself") {
+        dispatch({
+            type: ERROR,
+            payload: "'myself' can not be a username",
+        });
+    }
     const response = await authService.signUp(data);
     if (response.data.message !== "success") {
         dispatch({

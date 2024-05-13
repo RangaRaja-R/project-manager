@@ -4,7 +4,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Navbar from "./pages/Navbar";
 import Home from "./pages/Home";
-import Note from "./pages/Note";
+import Note from "./components/Note";
 import Tasks from "./pages/Tasks";
 import ProjectList from "./pages/ProjectList";
 import ProjectCreate from "./pages/ProjectCreate";

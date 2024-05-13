@@ -3,6 +3,7 @@ import { fetchProject, fetchProjects } from "../redux/actions/projectAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Project from "./Project";
+import "../style/projectList.css";
 
 export default function ProjectList({ loggedIn }) {
     const dispatch = useDispatch();
@@ -24,25 +25,44 @@ export default function ProjectList({ loggedIn }) {
 
     return (
         <div>
+            <div className="projectListTitle">
+                <h1>Projects</h1>
+                <div className="projectListTitle--add">
+                    <button
+                        className="secondary-button"
+                        onClick={() => navigate("/projects/create")}
+                    >
+                        new
+                    </button>
+                </div>
+            </div>
+            <hr />
             {projects.loading ? (
                 <p>loading</p>
             ) : (
-                <ul>
+                <div className="projectList">
                     {projects.projects.map((item, index) => {
                         return (
-                            <li
+                            <div
+                                className="project"
                                 key={index}
                                 onClick={() => {
                                     choose(item.id);
                                 }}
                             >
-                                {item.title}
-                            </li>
+                                <div className="project-title">
+                                    {item.title}
+                                </div>
+                                <div className="project-description">
+                                    {"Description: "}
+                                    <br />
+                                    {item.description || "empty"}
+                                </div>
+                            </div>
                         );
                     })}
-                </ul>
+                </div>
             )}
-            <button onClick={() => navigate("/projects/create")}>new</button>
         </div>
     );
 }

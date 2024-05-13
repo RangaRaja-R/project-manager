@@ -11,6 +11,7 @@ function SignUp({ loggedIn = false }) {
         name: "",
         email: "",
         password: "",
+        private: false,
     });
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
@@ -57,6 +58,15 @@ function SignUp({ loggedIn = false }) {
                     onChange={(e) =>
                         setData({ ...data, password: e.target.value })
                     }
+                />
+                <p>keep your account private?</p>
+                <p>this will keep you from others adding you to project</p>
+                <input
+                    type="check"
+                    checked={data.private}
+                    onChange={(e) => {
+                        setData({ ...data, private: e.target.value });
+                    }}
                 />
                 <p color="red">{error}</p>
                 <button className="primary-button" type="submit">

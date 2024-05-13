@@ -5,7 +5,6 @@ import { getAll } from "../redux/actions/authAction";
 import { useNavigate } from "react-router";
 
 export default function ProjectCreate() {
-    const creater = useSelector((state) => state.auth.user);
     const users = useSelector((state) => state.auth.all);
     const dispatch = useDispatch();
     const today = new Date().toISOString().split("T")[0];
@@ -54,7 +53,7 @@ export default function ProjectCreate() {
             />
             <input
                 type="checkbox"
-                value={data.group}
+                checked={data.group}
                 onChange={(e) => {
                     setData({ ...data, group: e.target.checked });
                     if (!data.group) {
@@ -71,7 +70,7 @@ export default function ProjectCreate() {
                     >
                         <option disabled>Select</option>
                         {users.map((item, index) => {
-                            if (item.id != creater.id)
+                            if (item.name != "myself")
                                 return (
                                     <option key={index} value={index}>
                                         {item.name} - {item.email}

@@ -4,6 +4,7 @@ import { CLEAR } from "../redux/reducers/rootReducer";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "../style/navbar.css";
+import { useState } from "react";
 
 function Navbar({ user, dark }) {
     const location = useLocation();
@@ -17,7 +18,10 @@ function Navbar({ user, dark }) {
     };
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
         return (
-            <div className="navbar" style={{ position: "fixed" }}>
+            <div
+                className="navbar"
+                style={{ position: "fixed", border: "none" }}
+            >
                 <button onClick={() => dark()}>svg</button>
             </div>
         );
@@ -30,8 +34,13 @@ function Navbar({ user, dark }) {
             </div>
             {user != null ? (
                 <div className="user">
-                    <h4>{user.name}</h4>
-                    <p onClick={signOut}>sign out</p>
+                    <button onClick={() => dark()}>svg</button>
+                    <div>
+                        <p id="user-name">{user.name}</p>
+                    </div>
+                    <div>
+                        <p onClick={signOut}>exit button</p>
+                    </div>
                 </div>
             ) : (
                 <div className="sign">

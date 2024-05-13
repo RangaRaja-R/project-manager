@@ -119,11 +119,18 @@ export default function Project({ close }) {
                         >
                             <option disabled>Select</option>
                             {users.map((item, index) => {
-                                return (
-                                    <option key={index} value={index}>
-                                        {item.name} - {item.email}
-                                    </option>
-                                );
+                                if (item.name != "myself")
+                                    return (
+                                        <option key={index} value={index}>
+                                            {item.name} - {item.email}
+                                        </option>
+                                    );
+                                else
+                                    return (
+                                        <option key={index} value={index}>
+                                            {item.name}
+                                        </option>
+                                    );
                             })}
                         </select>
                     </>
