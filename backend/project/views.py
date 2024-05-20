@@ -77,8 +77,8 @@ def api_details(request):
 def api_create(request):
     serializer = TaskSerializer(data=request.data)
 
-    if serializer.is_valid():
-        serializer.save()
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
 
     return Response(serializer.data)
 

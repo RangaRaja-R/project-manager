@@ -36,7 +36,6 @@ export default function ProjectList({ loggedIn }) {
                     </button>
                 </div>
             </div>
-            <hr />
             {projects.loading ? (
                 <p>loading</p>
             ) : (
@@ -51,7 +50,10 @@ export default function ProjectList({ loggedIn }) {
                                 }}
                             >
                                 <div className="project-title">
-                                    {item.title}
+                                    <div className="title">{item.title}</div>
+                                    <div className="deadline">
+                                        {item.deadline && item.deadline}
+                                    </div>
                                 </div>
                                 <div className="project-description">
                                     {"Description: "}

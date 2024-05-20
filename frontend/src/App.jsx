@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Navbar from "./pages/Navbar";
@@ -31,42 +31,39 @@ function App() {
         }
     }, []);
     return (
-        <div>
-            <HashRouter>
-                <Navbar user={user} dark={dark} />
-                <Routes>
-                    <Route index element={<Home />} />
-                    <Route
-                        path="/sign-in"
-                        element={<SignIn loggedIn={user != null} />}
-                    />
-                    <Route
-                        path="/sign-up"
-                        element={<SignUp loggedIn={user != null} />}
-                    />
-                    <Route
-                        path="/tasks"
-                        element={<Tasks loggedIn={user != null} />}
-                    />
-                    <Route
-                        path="/projects"
-                        element={<ProjectList loggedIn={user != null} />}
-                    />
-                    <Route
-                        path="/projects/create"
-                        element={<ProjectCreate />}
-                    />
-                    <Route path="/projects/edit" element={<ProjectEdit />} />
-                </Routes>
-                <Note
-                    note={user == null ? { content: "" } : note}
-                    loggedIn={user != null}
-                    save={(val) => {
+        <HashRouter>
+            <Navbar user={user} dark={dark} />
+            <Note
+                note={user == null ? { content: "" } : note}
+                loggedIn={user != null}
+                save={(val) => {
+                    if (note.content != val)
                         dispatch(save({ ...note, content: val }));
-                    }}
+                }}
+            />
+            <Routes>
+                <Route index path="/home" element={<Home />} />
+                <Route
+                    path="/sign-in"
+                    element={<SignIn loggedIn={user != null} />}
                 />
-            </HashRouter>
-        </div>
+                <Route
+                    path="/sign-up"
+                    element={<SignUp loggedIn={user != null} />}
+                />
+                <Route
+                    path="/tasks"
+                    element={<Tasks loggedIn={user != null} />}
+                />
+                <Route
+                    path="/projects"
+                    element={<ProjectList loggedIn={user != null} />}
+                />
+                <Route path="/projects/create" element={<ProjectCreate />} />
+                <Route path="/projects/edit" element={<ProjectEdit />} />
+                <Route path="*" element={<Navigate to="/home" replace />} />
+            </Routes>
+        </HashRouter>
     );
 }
 

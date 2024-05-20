@@ -6,6 +6,9 @@
     color: rgb(var(--second));
     border-bottom: solid 1px rgba(var(--second), 0.5);
     .projectTitle {
+        .sidebar__logo {
+            cursor: pointer;
+        }
         display: flex;
         align-items: center;
         .logo {
@@ -35,6 +38,7 @@
         #user-name {
             text-decoration: none;
             font: 20px bolder;
+            padding-right: 12px;
             &::first-letter {
                 text-transform: capitalize;
             }

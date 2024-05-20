@@ -1,11 +1,13 @@
 .projectListTitle {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 16px;
+    padding: 0px 16px;
+    background-color: rgb(var(--prime));
+    border-bottom: 2px solid rgb(var(--second));
 }
 .projectList {
     display: grid;
@@ -13,7 +15,7 @@
 }
 .projectList .project {
     margin: 10px;
-    background-color: rgba(var(--second), 0.2);
+    background-color: rgba(var(--second), 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,6 +25,13 @@
     .project-title {
         display: flex;
         justify-content: space-between;
+        .title {
+            text-transform: capitalize;
+        }
+        .deadline {
+            color: rgba(var(--second), 0.8);
+            font-size: 0.8rem;
+        }
         font-size: 1.2rem;
         font-weight: 600;
     }

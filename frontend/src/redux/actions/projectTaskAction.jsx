@@ -10,10 +10,17 @@ export const LOAD = "LOAD_PROJECT_TASK";
 export const createTask = (id, data) => async (dispatch) => {
     // data should be an object with task attributes
     try {
-        if (data.deadline == "") {
-            data.deadline = null;
+        // remove null from data
+        const newData = Object.keys(data).reduce((acc, key) => {
+            if (data[key] !== null) {
+                acc[key] = data[key];
+            }
+            return acc;
+        }, {});
+        if (newData.deadline == "") {
+            newData.deadline = null;
         }
-        const res = await projectTaskService.create({ ...data, owner: id });
+        const res = await projectTaskService.create({ ...newData, owner: id });
         await dispatch(getTasks());
     } catch (error) {
         console.log(error);

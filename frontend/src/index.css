@@ -8,17 +8,30 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     --prime: 189, 151, 207;
-    --first: 217, 217, 217;
+    --first: 250, 250, 250;
     --second: 0, 0, 0;
+    --high: 255, 0, 0;
+    --medium: 255, 255, 0;
+    --low: 0, 255, 0;
     background-color: rgb(var(--first));
     color: rgb(var(--second));
+    height: 100vh;
 }
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .dark {
     --prime: 189, 151, 207;
     --first: 0, 0, 0;
-    --second: 217, 217, 217;
+    --second: 250, 250, 250;
 }
 button {
     padding: 6px 12px;
@@ -56,4 +69,7 @@ button {
 
 a {
     color: rgb(var(--second));
+}
+h1 {
+    text-transform: capitalize;
 }

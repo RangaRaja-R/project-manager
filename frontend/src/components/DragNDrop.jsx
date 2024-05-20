@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { taskStatus, deleteTask } from "../redux/actions/projectTaskAction";
 
-export default function DragNDrop({ tasks = [] }) {
+export default function DragNDrop({ tasks = [], newTask, users = [] }) {
     const [todo, setTodo] = useState([]);
     const [inProgress, setInprogress] = useState([]);
     const [completed, setCompleted] = useState([]);
@@ -85,34 +85,67 @@ export default function DragNDrop({ tasks = [] }) {
         };
     }, [tasks]);
     return (
-        <div>
-            <div onDragOver={onDragOver} onDrop={(e) => onDrop(e, "todo")}>
-                todo
-                <ul>
+        <>
+            <div className="project-item-grid">
+                <div className="project-task-title">todo</div>
+                <div
+                    className="project-task-list"
+                    onDragOver={onDragOver}
+                    onDrop={(e) => onDrop(e, "todo")}
+                >
                     {todo.map((item, index) => {
                         return (
-                            <li
+                            <div
+                                className="project-task-item"
                                 draggable
                                 onDragStart={(e) =>
                                     onDrag(e, { from: "todo", id: item.id })
                                 }
                                 key={index}
+                                style={{
+                                    borderBottom: `solid 4px rgb(var(--${item.difficulty.toLowerCase()}))`,
+                                    backgroundImage:
+                                        item.priority == "default"
+                                            ? ""
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                }}
                             >
-                                {item.title}
-                            </li>
+                                <div className="task-title">
+                                    <div className="title">{item.title}</div>
+                                    <div className="deadline">
+                                        {item.deadline}
+                                    </div>
+                                </div>
+                                <div className="task-bottom">
+                                    <div className="description">
+                                        {item.description}
+                                    </div>
+                                    <div className="assign">
+                                        {users &&
+                                            item.assigned_to &&
+                                            users[
+                                                users.findIndex(
+                                                    (user) =>
+                                                        user.id ===
+                                                        item.assigned_to
+                                                )
+                                            ].name}
+                                    </div>
+                                </div>
+                            </div>
                         );
                     })}
-                </ul>
-            </div>
-            <div
-                onDragOver={onDragOver}
-                onDrop={(e) => onDrop(e, "in progress")}
-            >
-                inprogress
-                <ul>
+                </div>
+                <div className="project-task-title">inprogress</div>
+                <div
+                    className="project-task-list"
+                    onDragOver={onDragOver}
+                    onDrop={(e) => onDrop(e, "in progress")}
+                >
                     {inProgress.map((item, index) => {
                         return (
-                            <li
+                            <div
+                                className="project-task-item"
                                 draggable
                                 onDragStart={(e) =>
                                     onDrag(e, {
@@ -121,19 +154,50 @@ export default function DragNDrop({ tasks = [] }) {
                                     })
                                 }
                                 key={index}
+                                style={{
+                                    borderBottom: `solid 4px rgb(var(--${item.difficulty.toLowerCase()}))`,
+                                    backgroundImage:
+                                        item.priority == "default"
+                                            ? ""
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                }}
                             >
-                                {item.title}
-                            </li>
+                                <div className="task-title">
+                                    <div className="title">{item.title}</div>
+                                    <div className="deadline">
+                                        {item.deadline}
+                                    </div>
+                                </div>
+                                <div className="task-bottom">
+                                    <div className="description">
+                                        {item.description}
+                                    </div>
+                                    <div className="assign">
+                                        {users &&
+                                            item.assigned_to &&
+                                            users[
+                                                users.findIndex(
+                                                    (user) =>
+                                                        user.id ===
+                                                        item.assigned_to
+                                                )
+                                            ].name}
+                                    </div>
+                                </div>
+                            </div>
                         );
                     })}
-                </ul>
-            </div>
-            <div onDragOver={onDragOver} onDrop={(e) => onDrop(e, "completed")}>
-                completed
-                <ul>
+                </div>
+                <div className="project-task-title">completed</div>
+                <div
+                    className="project-task-list"
+                    onDragOver={onDragOver}
+                    onDrop={(e) => onDrop(e, "completed")}
+                >
                     {completed.map((item, index) => {
                         return (
-                            <li
+                            <div
+                                className="project-task-item"
                                 draggable
                                 onDragStart={(e) =>
                                     onDrag(e, {
@@ -142,17 +206,52 @@ export default function DragNDrop({ tasks = [] }) {
                                     })
                                 }
                                 key={index}
+                                style={{
+                                    borderBottom: `solid 4px rgb(var(--${item.difficulty.toLowerCase()}))`,
+                                    backgroundImage:
+                                        item.priority == "default"
+                                            ? ""
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                }}
                             >
-                                {item.title}
-                            </li>
+                                <div className="task-title">
+                                    <div className="title">{item.title}</div>
+                                    <div className="deadline">
+                                        {item.deadline}
+                                    </div>
+                                </div>
+                                <div className="task-bottom">
+                                    <div className="description">
+                                        {item.description}
+                                    </div>
+                                    <div className="assign">
+                                        {users &&
+                                            item.assigned_to &&
+                                            users[
+                                                users.findIndex(
+                                                    (user) =>
+                                                        user.id ===
+                                                        item.assigned_to
+                                                )
+                                            ].name}
+                                    </div>
+                                </div>
+                            </div>
                         );
                     })}
-                </ul>
+                </div>
+                <div
+                    className="project-task-delete"
+                    onDragOver={onDragOver}
+                    onDrop={(e) => onDrop(e, "delete")}
+                >
+                    delete
+                </div>
+                <div className="project-task-options">
+                    <button onClick={newTask}>add Task</button>
+                    <button onClick={() => saveChanges()}>save changes</button>
+                </div>
             </div>
-            <div onDragOver={onDragOver} onDrop={(e) => onDrop(e, "delete")}>
-                delete
-            </div>
-            <button onClick={() => saveChanges()}>save changes</button>
-        </div>
+        </>
     );
 }
