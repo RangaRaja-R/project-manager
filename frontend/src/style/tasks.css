@@ -1,0 +1,72 @@
+.task-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.create-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(var(--first), 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+}
+
+.create-task form {
+    background-color: rgb(var(--first));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    border: solid 1px rgb(var(--second));
+    border-radius: 8px;
+    padding: 64px 32px;
+    .element {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        text-align: left;
+    }
+}
+
+.tasks-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px;
+    background-color: rgb(var(--prime));
+    border-bottom: 2px solid rgb(var(--second));
+}
+
+.task-table-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.task-table th {
+    background-color: rgba(var(--second), 0.2);
+    text-transform: capitalize;
+}
+.task-table th,
+td {
+    border: 1px solid rgba(var(--second), 0.3);
+    padding: 8px 12px;
+}
+
+.task-table td:nth-child(2) {
+    text-align: left;
+}

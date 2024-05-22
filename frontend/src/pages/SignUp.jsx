@@ -3,6 +3,7 @@ import { signUp } from "../redux/actions/authAction";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../style/signUp.css";
+import Logo from "../components/Logo";
 
 function SignUp({ loggedIn = false }) {
     const error = useSelector((state) => state.auth.error);
@@ -30,9 +31,7 @@ function SignUp({ loggedIn = false }) {
     }
     return (
         <div className="signUpPage">
-            <div className="logo">
-                <p>logo here</p>
-            </div>
+            <Logo scale={3} />
             <h1>TaskMaster</h1>
             <form onSubmit={handleSubmit}>
                 <input
@@ -42,6 +41,7 @@ function SignUp({ loggedIn = false }) {
                     onChange={(e) => {
                         setData({ ...data, name: e.target.value });
                     }}
+                    required
                 />
                 <input
                     type="email"
@@ -50,25 +50,29 @@ function SignUp({ loggedIn = false }) {
                     onChange={(e) =>
                         setData({ ...data, email: e.target.value })
                     }
+                    required
                 />
                 <input
                     type="password"
                     value={data.password}
                     placeholder="Password"
+                    minLength={8}
                     onChange={(e) =>
                         setData({ ...data, password: e.target.value })
                     }
+                    required
                 />
-                <p>keep your account private?</p>
-                <p>this will keep you from others adding you to project</p>
-                <input
-                    type="check"
-                    checked={data.private}
-                    onChange={(e) => {
-                        setData({ ...data, private: e.target.value });
-                    }}
-                />
-                <p color="red">{error}</p>
+                <div className="private">
+                    <input
+                        type="checkbox"
+                        checked={data.private}
+                        onClick={(e) => {
+                            setData({ ...data, private: !data.private });
+                        }}
+                    />
+                    <p>keep your account private?</p>
+                </div>
+                <p className="error">{error}</p>
                 <button className="primary-button" type="submit">
                     sign in
                 </button>

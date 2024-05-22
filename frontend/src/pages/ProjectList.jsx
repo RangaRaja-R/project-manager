@@ -30,7 +30,7 @@ export default function ProjectList({ loggedIn }) {
                 <div className="projectListTitle--add">
                     <button
                         className="secondary-button"
-                        onClick={() => navigate("/projects/create")}
+                        onClick={() => navigate("/projects/modify")}
                     >
                         new
                     </button>

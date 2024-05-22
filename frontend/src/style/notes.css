@@ -6,12 +6,18 @@
     background-color: rgb(255, 255, 0, 0.5);
     padding: 8px 12px;
     border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     .notes-options {
+        cursor: default;
         display: flex;
         justify-content: end;
     }
     & textarea {
-        width: 100%;
+        width: 90%;
         height: 100px;
         font-size: 16px;
         line-height: 17px;

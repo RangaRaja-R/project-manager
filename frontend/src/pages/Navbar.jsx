@@ -1,21 +1,30 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import "../style/navbar.css";
+import Logo from "../components/Logo";
 
-function Navbar({ user, dark }) {
+function Navbar({ user, dark, isDark }) {
     const location = useLocation();
     const [open, setOpen] = useState(false);
+    const [sw, setSw] = useState("../light.svg");
     const error = useSelector((state) => state.auth.error);
+    useEffect(() => {
+        if (isDark) {
+            setSw("../dark.svg");
+        } else {
+            setSw("../light.svg");
+        }
+    }, [isDark]);
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
         return (
             <div
                 className="navbar"
                 style={{ position: "fixed", border: "none" }}
             >
-                <button onClick={() => dark()}>svg</button>
+                <img src={sw} alt="switch" onClick={() => dark()} />
             </div>
         );
     }
@@ -29,19 +38,19 @@ function Navbar({ user, dark }) {
                     >
                         &#9776;
                     </div>
-                    <div className="logo"></div>
+                    <Logo />
                     <Link to="">TaskMaster{error}</Link>
                 </div>
                 {user != null ? (
                     <div className="user">
-                        <button onClick={() => dark()}>svg</button>
+                        <img src={sw} alt="switch" onClick={() => dark()} />
                         <div>
                             <p id="user-name">{user.name}</p>
                         </div>
                     </div>
                 ) : (
                     <div className="sign">
-                        <button onClick={() => dark()}>svg</button>
+                        <img src={sw} alt="switch" onClick={() => dark()} />
                         <button className="tertiary-button signIn">
                             <Link to="/sign-in">Sign In</Link>
                         </button>

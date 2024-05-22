@@ -7,32 +7,40 @@ import Home from "./pages/Home";
 import Note from "./components/Note";
 import Tasks from "./pages/Tasks";
 import ProjectList from "./pages/ProjectList";
-import ProjectCreate from "./pages/ProjectCreate";
+import ProjectModify from "./pages/ProjectModify";
 import ProjectEdit from "./pages/ProjectEdit";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { user as isLoggedIn } from "./redux/actions/authAction";
+import { getAll, user as isLoggedIn } from "./redux/actions/authAction";
 import { getNote, save } from "./redux/actions/noteAction";
 
 function App() {
     const user = useSelector((state) => state.auth.user);
     const note = useSelector((state) => state.note);
     const dispatch = useDispatch();
+    const [isDark, setDark] = useState(
+        document.body.classList.contains("dark")
+    );
     const dark = () => {
-        if (!document.body.classList.contains("dark"))
+        if (!document.body.classList.contains("dark")) {
             document.body.classList.add("dark");
-        else document.body.classList.remove("dark");
+            setDark(true);
+        } else {
+            document.body.classList.remove("dark");
+            setDark(false);
+        }
     };
     useEffect(() => {
         if (document.cookie.match("(^|;)\\s*" + "user" + "\\s*=\\s*([^;]+)")) {
             dispatch(isLoggedIn()).then(() => {
                 dispatch(getNote());
             });
+            dispatch(getAll());
         }
     }, []);
     return (
         <HashRouter>
-            <Navbar user={user} dark={dark} />
+            <Navbar user={user} dark={dark} isDark={isDark} />
             <Note
                 note={user == null ? { content: "" } : note}
                 loggedIn={user != null}
@@ -59,8 +67,7 @@ function App() {
                     path="/projects"
                     element={<ProjectList loggedIn={user != null} />}
                 />
-                <Route path="/projects/create" element={<ProjectCreate />} />
-                <Route path="/projects/edit" element={<ProjectEdit />} />
+                <Route path="/projects/modify" element={<ProjectModify />} />
                 <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
         </HashRouter>

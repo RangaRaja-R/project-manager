@@ -52,12 +52,15 @@ export default function ProjectEdit() {
                 value={data.title}
                 onChange={(e) => setData({ ...data, title: e.target.value })}
                 required
+                placeholder="Project Title"
             />
             <textarea
                 value={data.description}
                 onChange={(e) =>
                     setData({ ...data, description: e.target.value })
                 }
+                required
+                placeholder="Project Description"
             />
             <input
                 type="date"
@@ -65,17 +68,20 @@ export default function ProjectEdit() {
                 min={today}
                 onChange={(e) => setData({ ...data, due: e.target.value })}
             />
-            <input
-                type="radio"
-                checked={data.group}
-                onChange={(e) => {
-                    setData({ ...data, group: e.target.checked });
-                    if (!data.group) {
-                        setMembers([]);
-                        setSelected(null);
-                    }
-                }}
-            />
+            <div>
+                is this a group project?
+                <input
+                    type="radio"
+                    checked={data.group}
+                    onChange={(e) => {
+                        setData({ ...data, group: e.target.checked });
+                        if (!data.group) {
+                            setMembers([]);
+                            setSelected(null);
+                        }
+                    }}
+                />
+            </div>
             {data.group ? (
                 <>
                     <select

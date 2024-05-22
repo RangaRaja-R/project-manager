@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../style/signIn.css";
+import Logo from "../components/Logo";
 
 function SignIn({ loggedIn = false }) {
     const error = useSelector((state) => state.auth.error);
@@ -29,9 +30,7 @@ function SignIn({ loggedIn = false }) {
     }
     return (
         <div className="signInPage">
-            <div className="logo">
-                <p>logo here</p>
-            </div>
+            <Logo scale={3} />
             <h1>TaskMaster</h1>
             <form onSubmit={handleSubmit}>
                 <input

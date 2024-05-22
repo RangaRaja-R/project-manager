@@ -39,7 +39,7 @@ function SideBar({ setOpen, open, user }) {
             </div>
             {user && (
                 <div onClick={signOut} color="red">
-                    sign Out
+                    <img src="../signOut.svg" />
                 </div>
             )}
         </div>

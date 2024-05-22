@@ -8,28 +8,47 @@ function Note({ note, save, loggedIn }) {
     const [open, setOpen] = useState(false);
     useEffect(() => {
         setVal(note.content);
+        const handleEscape = (e) => {
+            if (e.key === "Escape") {
+                setOpen(false);
+                save(val);
+            } else if (e.key == "n") {
+                setOpen(true);
+            }
+        };
+        window.addEventListener("keydown", handleEscape);
+        return () => {
+            window.removeEventListener("keydown", handleEscape);
+        };
     }, [note]);
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
         return <></>;
     }
     if (!open) {
         return (
-            <div className="notes" onClick={() => setOpen(true)}>
-                <p onClick={() => setOpen(true)}>notes</p>
+            <div
+                className="notes"
+                style={{
+                    height: "35px",
+                    border: "1px solid rgb(var(--second))",
+                }}
+                onClick={() => setOpen(true)}
+            >
+                <img src="../notes.svg" alt="notes" />
             </div>
         );
     }
     return (
         <div className="notes">
             <div className="notes-options">
-                <button
+                <img
+                    src="../close.svg"
+                    alt="close"
                     onClick={() => {
                         setOpen(false);
                         save(val);
                     }}
-                >
-                    close
-                </button>
+                />
             </div>
             <textarea
                 disabled={!loggedIn}

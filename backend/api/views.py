@@ -11,9 +11,11 @@ import datetime
 @api_view(['POST'])
 def register(request):
     serializer = UserSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-    serializer.save()
-    return Response({'user': serializer.data, 'message': 'success'})
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'user': serializer.data, 'message': 'success'})
+    else:
+        return Response({'message': "user already exists"})
 
 
 @api_view(['POST'])
@@ -28,7 +30,7 @@ def login(request):
     if not user.check_password(password):
         return Response({'message': 'incorrect password'})
     now = datetime.datetime.now(datetime.timezone.utc)
-    exp = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=60)
+    exp = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=10)
     payload = {
         'id': user.id,
         'iat': now,

@@ -107,7 +107,7 @@ export default function DragNDrop({ tasks = [], newTask, users = [] }) {
                                     backgroundImage:
                                         item.priority == "default"
                                             ? ""
-                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.6), rgba(var(--${item.priority.toLowerCase()}), 0.3))`,
                                 }}
                             >
                                 <div className="task-title">
@@ -159,7 +159,7 @@ export default function DragNDrop({ tasks = [], newTask, users = [] }) {
                                     backgroundImage:
                                         item.priority == "default"
                                             ? ""
-                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.6), rgba(var(--${item.priority.toLowerCase()}), 0.3))`,
                                 }}
                             >
                                 <div className="task-title">
@@ -211,7 +211,7 @@ export default function DragNDrop({ tasks = [], newTask, users = [] }) {
                                     backgroundImage:
                                         item.priority == "default"
                                             ? ""
-                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.3), rgba(var(--${item.priority.toLowerCase()}), 0.1))`,
+                                            : `linear-gradient(rgba(var(--${item.priority.toLowerCase()}), 0.6), rgba(var(--${item.priority.toLowerCase()}), 0.3))`,
                                 }}
                             >
                                 <div className="task-title">

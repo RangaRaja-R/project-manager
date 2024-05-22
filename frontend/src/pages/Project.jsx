@@ -24,7 +24,7 @@ export default function Project({ close }) {
     });
 
     const handleEditClick = () => {
-        navigate("/projects/edit");
+        navigate("/projects/modify", { state: { edit: true } });
     };
     const handleCreate = (e) => {
         e.preventDefault();
@@ -54,6 +54,18 @@ export default function Project({ close }) {
     useEffect(() => {
         dispatch(getTasks(project.id));
         dispatch(getAll());
+        const handleKeyPress = (e) => {
+            console.log(e.key);
+            if (e.key === "Escape") {
+                close();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyPress);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress);
+        };
     }, []);
 
     if (users == null || project == null || tasks == null) {
@@ -83,6 +95,7 @@ export default function Project({ close }) {
                             onChange={(e) =>
                                 setData({ ...data, title: e.target.value })
                             }
+                            placeholder="Task Title"
                             required
                         />
                         <textarea
@@ -94,6 +107,8 @@ export default function Project({ close }) {
                                     description: e.target.value,
                                 })
                             }
+                            placeholder="Task Description"
+                            required
                         />
                         <input
                             type="date"
@@ -103,6 +118,10 @@ export default function Project({ close }) {
                                 setData({ ...data, deadline: e.target.value })
                             }
                         />
+                        <div className="additional" onClick={additionalValues}>
+                            <div>additional details</div>
+                            <div>{additional ? "-" : "+"}</div>
+                        </div>
                         {additional && (
                             <>
                                 <div className="element">
@@ -184,7 +203,6 @@ export default function Project({ close }) {
                                 </div>
                             </>
                         )}
-                        <p onClick={additionalValues}>additional details</p>
                         <div className="element">
                             <button onClick={() => setOpen(false)}>
                                 cancel

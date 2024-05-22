@@ -15,14 +15,24 @@
         flex-direction: column;
         gap: 16px;
         justify-content: center;
+        text-align: left;
         border: solid 1px rgb(var(--second));
         border-radius: 8px;
-        padding: 64px 32px;
+        padding: 0px 32px;
+        padding-top: 48px;
+        padding-bottom: 64px;
         .element {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4px;
             text-align: left;
+            width: 320px;
+        }
+        .additional {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 24px;
         }
     }
 }
@@ -89,6 +99,8 @@
 }
 .project-task-list:has(:active) ~ .project-task-delete {
     animation: shake infinite 1s ease-in-out;
+    color: red;
+    text-shadow: 0 0 0px 20px rgb(var(--high));
 }
 .project-task-item:active {
     cursor: grabbing;
@@ -104,12 +116,12 @@
 .project-task-delete {
     grid-row: -1;
     justify-self: center;
-    justify-content: center;
+    width: 100%;
+    text-align: center;
 }
 
 @keyframes shake {
     0% {
-        color: red;
         transform: rotate(0deg);
     }
     10% {

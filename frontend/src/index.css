@@ -12,11 +12,11 @@ body {
     flex-direction: column;
     margin: 0;
     --prime: 189, 151, 207;
-    --first: 250, 250, 250;
+    --first: 227, 227, 225;
     --second: 0, 0, 0;
-    --high: 255, 0, 0;
-    --medium: 255, 255, 0;
-    --low: 0, 255, 0;
+    --high: 255, 55, 95;
+    --medium: 255, 201, 38;
+    --low: 63, 202, 125;
     background-color: rgb(var(--first));
     color: rgb(var(--second));
     height: 100vh;
@@ -31,7 +31,7 @@ body {
 .dark {
     --prime: 189, 151, 207;
     --first: 0, 0, 0;
-    --second: 250, 250, 250;
+    --second: 227, 227, 225;
 }
 button {
     padding: 6px 12px;
@@ -72,4 +72,60 @@ a {
 }
 h1 {
     text-transform: capitalize;
+}
+
+input:not([type="checkbox"]) {
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgb(var(--second));
+    border-radius: 5px;
+    background-color: rgba(var(--prime), 0.2);
+    padding: 0 10px;
+    &:focus {
+        outline: none;
+    }
+}
+input[type="range"] {
+    width: 100%;
+    height: 10px;
+    appearance: none;
+    border-radius: 15px;
+    padding: 0;
+    opacity: 0.7;
+}
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(var(--prime));
+    border: 1px solid rgb(var(--prime));
+}
+textarea {
+    width: 300px;
+    height: 100px;
+    border: 1px solid rgb(var(--second));
+    border-radius: 5px;
+    background-color: rgba(var(--prime), 0.2);
+    padding: 10px;
+    font-size: 0.9rem;
+    &:focus {
+        outline: none;
+    }
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    padding-left: 24px;
+}
+
+select {
+    height: 30px;
+    border: 1px solid rgb(var(--second));
+    background-color: rgba(var(--prime), 0.2);
+    border-radius: 5px;
+    width: 100%;
 }

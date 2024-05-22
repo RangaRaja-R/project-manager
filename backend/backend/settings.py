@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dia+(r05pluhzwlz+%0@15wqqntqvd+it+it*28w$b3keqi#=v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["http://127.0.0.1:8000", "localhost"]
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 
 # Application definition
@@ -82,10 +82,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
      'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'try',
-        'USER': 'try',
-        'PASSWORD': 'Hello123',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'projectManager',
+        'USER': 'root',
+        'PASSWORD': 'R@masubbu1971',
+        'HOST': 'localhost',  # Name of the MySQL service defined in docker-compose.yml
+        'PORT': '3306',
     }
 }
 

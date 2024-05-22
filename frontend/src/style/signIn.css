@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    height: 100vh;
+    flex: 1;
 }
 .signInPage form {
     display: flex;
@@ -38,9 +38,4 @@
     &:hover {
         text-decoration: underline;
     }
-}
-
-.signInPage .logo {
-    width: 100px;
-    height: 100px;
 }

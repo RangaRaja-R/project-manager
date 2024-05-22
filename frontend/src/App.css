@@ -1,0 +1,14 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 2px;
+    flex-shrink: 0;
+}
+
+.homePage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

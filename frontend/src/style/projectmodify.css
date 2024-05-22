@@ -1,0 +1,35 @@
+.project-modify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(var(--first), 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+}
+
+.project-modify form {
+    background-color: rgb(var(--first));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-content: start;
+    text-align: left;
+    border: solid 1px rgb(var(--second));
+    border-radius: 8px;
+    padding: 64px 32px;
+    .element {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        text-align: left;
+    }
+    & li:hover {
+        cursor: url("https://img.icons8.com/?size=20&id=11997&format=png&color=000000"),
+            auto;
+    }
+}
