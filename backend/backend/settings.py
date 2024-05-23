@@ -85,8 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projectManager',
         'USER': 'root',
-        'PASSWORD': 'R@masubbu1971',
-        'HOST': 'localhost',  # Name of the MySQL service defined in docker-compose.yml
+        'PASSWORD': 'root',
+        'HOST': 'localhost', 
         'PORT': '3306',
     }
 }
