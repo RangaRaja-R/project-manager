@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProject, fetchProjects } from "../redux/actions/projectAction";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Project from "./Project";
 import "../style/projectList.css";
 

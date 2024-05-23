@@ -6,7 +6,7 @@ import {
 } from "../redux/actions/projectAction";
 import { useSelector, useDispatch } from "react-redux";
 import { getAll } from "../redux/actions/authAction";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../style/projectmodify.css";
 
 export default function ProjectModify() {

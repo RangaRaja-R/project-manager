@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchProjects, updateProject } from "../redux/actions/projectAction";
 import { useSelector, useDispatch } from "react-redux";
 import { getAll } from "../redux/actions/authAction";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import LoginPlease from "./LoginPlease";
 
 export default function ProjectEdit() {

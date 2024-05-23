@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks, createTask } from "../redux/actions/projectTaskAction";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { getAll } from "../redux/actions/authAction";
 import DragNDrop from "../components/DragNDrop";
 import "../style/project.css";

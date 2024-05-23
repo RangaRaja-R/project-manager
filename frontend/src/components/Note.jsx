@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import "../style/notes.css";
 
 function Note({ note, save, loggedIn }) {
