@@ -2,7 +2,7 @@ import axios from "axios";
 
 class projectService {
     constructor() {
-        this.base = "http://localhost:8000/project";
+        this.base = "https://project-manager-jqsq.onrender.com/project";
     }
     getProjects(id) {
         return axios.get(`${this.base}/get-owned?owner=${id}`);

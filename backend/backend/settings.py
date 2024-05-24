@@ -137,5 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'api.User'
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "*",
+    # "https://project-manager-jqsq.onrender.com",
+]
 CORS_ALLOW_CREDENTIALS = True

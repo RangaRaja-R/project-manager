@@ -2,7 +2,7 @@ import axios from "axios";
 
 class projectTaskService {
     constructor() {
-        this.base = "http://localhost:8000/project/task";
+        this.base = "https://project-manager-jqsq.onrender.com/project/task";
     }
     create(data) {
         return axios.post(`${this.base}/create`, data);

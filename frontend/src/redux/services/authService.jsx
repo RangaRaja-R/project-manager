@@ -2,7 +2,7 @@ import axios from "axios";
 
 class authService {
     constructor() {
-        this.base = "http://localhost:8000/user";
+        this.base = "https://project-manager-jqsq.onrender.com/user";
         this.axios = axios.create({
             withCredentials: true,
         });
