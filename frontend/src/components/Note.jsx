@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { NoteLogo, CloseLogo } from "./Svg";
 import "../style/notes.css";
 
 function Note({ note, save, loggedIn }) {
@@ -34,16 +35,14 @@ function Note({ note, save, loggedIn }) {
                 }}
                 onClick={() => setOpen(true)}
             >
-                <img src="../notes.svg" alt="notes" />
+                <NoteLogo />
             </div>
         );
     }
     return (
         <div className="notes">
             <div className="notes-options">
-                <img
-                    src="../close.svg"
-                    alt="close"
+                <CloseLogo
                     onClick={() => {
                         setOpen(false);
                         save(val);

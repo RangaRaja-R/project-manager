@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { signOut as mainOut } from "../redux/actions/authAction";
 import { CLEAR } from "../redux/reducers/rootReducer";
 import "../style/sidebar.css";
+import { SignOutLogo } from "./Svg";
 
 function SideBar({ setOpen, open, user }) {
     const options = ["home", "projects", "tasks"];
@@ -39,7 +40,7 @@ function SideBar({ setOpen, open, user }) {
             </div>
             {user && (
                 <div onClick={signOut} color="red">
-                    <img src="../signOut.svg" />
+                    <SignOutLogo />
                 </div>
             )}
         </div>

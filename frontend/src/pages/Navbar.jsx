@@ -5,17 +5,18 @@ import { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import "../style/navbar.css";
 import Logo from "../components/Logo";
+import { LightMode, DarkMode } from "../components/Svg";
 
 function Navbar({ user, dark, isDark }) {
     const location = useLocation();
     const [open, setOpen] = useState(false);
-    const [sw, setSw] = useState("../light.svg");
+    const [sw, setSw] = useState(<LightMode />);
     const error = useSelector((state) => state.auth.error);
     useEffect(() => {
         if (isDark) {
-            setSw("../dark.svg");
+            setSw(<DarkMode />);
         } else {
-            setSw("../light.svg");
+            setSw(<LightMode />);
         }
     }, [isDark]);
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
