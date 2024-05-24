@@ -10,22 +10,22 @@ import { LightMode, DarkMode } from "../components/Svg";
 function Navbar({ user, dark, isDark }) {
     const location = useLocation();
     const [open, setOpen] = useState(false);
-    const [sw, setSw] = useState(<LightMode />);
     const error = useSelector((state) => state.auth.error);
     useEffect(() => {
-        if (isDark) {
-            setSw(<DarkMode />);
-        } else {
-            setSw(<LightMode />);
-        }
+        console.log(isDark);
     }, [isDark]);
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
         return (
             <div
                 className="navbar"
                 style={{ position: "fixed", border: "none" }}
+                onClick={() => dark()}
             >
-                <img src={sw} alt="switch" onClick={() => dark()} />
+                {isDark ? (
+                    <DarkMode onClick={() => dark()} />
+                ) : (
+                    <LightMode onClick={() => dark()} />
+                )}
             </div>
         );
     }
@@ -44,14 +44,26 @@ function Navbar({ user, dark, isDark }) {
                 </div>
                 {user != null ? (
                     <div className="user">
-                        <img src={sw} alt="switch" onClick={() => dark()} />
+                        <div onClick={() => dark()}>
+                            {isDark ? (
+                                <DarkMode onClick={dark} />
+                            ) : (
+                                <LightMode onClick={() => dark()} />
+                            )}
+                        </div>
                         <div>
                             <p id="user-name">{user.name}</p>
                         </div>
                     </div>
                 ) : (
                     <div className="sign">
-                        <img src={sw} alt="switch" onClick={() => dark()} />
+                        <div onClick={() => dark()}>
+                            {isDark ? (
+                                <DarkMode onClick={() => dark()} />
+                            ) : (
+                                <LightMode onClick={() => dark()} />
+                            )}
+                        </div>
                         <button className="tertiary-button signIn">
                             <Link to="/sign-in">Sign In</Link>
                         </button>

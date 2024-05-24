@@ -31,12 +31,23 @@ function App() {
         }
     };
     useEffect(() => {
+        let isMounted = true;
+        if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme)").matches
+        ) {
+            if (isMounted) {
+                setDark(true);
+                document.body.classList.add("dark");
+            }
+        }
         if (document.cookie.match("(^|;)\\s*" + "user" + "\\s*=\\s*([^;]+)")) {
             dispatch(isLoggedIn()).then(() => {
                 dispatch(getNote());
             });
             dispatch(getAll());
         }
+        return () => (isMounted = false);
     }, []);
     return (
         <HashRouter>
