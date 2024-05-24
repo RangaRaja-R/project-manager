@@ -1,6 +1,25 @@
-from django.db import models
-from django.db.models import CheckConstraint
-from django.contrib.auth.models import AbstractUser
+from djongo import models
+
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+
+
+class UserManager(BaseUserManager):
+    use_in_migrations = True
+
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user(email, password, **extra_fields)
 
 
 class User(AbstractUser):
@@ -13,6 +32,11 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+    objects = UserManager()
+
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, name='owner')
@@ -21,13 +45,6 @@ class Task(models.Model):
     deadline = models.DateField(null=True)
     completion = models.IntegerField(default=0)
 
-    class Meta:
-        constraints = [
-            CheckConstraint(
-                check=models.Q(completion__gte=0)&models.Q(completion__lte=100),
-                name='check_completion_level',
-            ),
-        ]
 
     def __str__(self):
         return self.task

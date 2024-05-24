@@ -1,5 +1,4 @@
-from django.db import models
-from django.db.models import CheckConstraint
+from djongo import models
 from api.models import User
 
 

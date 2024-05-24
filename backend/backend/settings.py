@@ -82,12 +82,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
      'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'projectManager',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost', 
-        'PORT': '3306',
+        'ENGINE': 'djongo',
+        'NAME': 'project-manager',
+        'CLIENT': {
+            # mongodb+srv://rangaraja:<password>@project-manager.dyc6go6.mongodb.net/?retryWrites=true&w=majority&appName=project-manager
+            'host': 'mongodb+srv://rangaraja:foqPOfKnJgxqxylj@project-manager.dyc6go6.mongodb.net/project-manager?retryWrites=true&w=majority',
+            'username': 'rangaraja',
+            'password': 'foqPOfKnJgxqxylj'
+        }
     }
 }
 

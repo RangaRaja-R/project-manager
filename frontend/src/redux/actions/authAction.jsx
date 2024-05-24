@@ -74,6 +74,7 @@ export const signUp = (data) => async (dispatch) => {
             type: SIGN_UP,
             payload: response.data,
         });
+        await dispatch(user());
     }
 };
 

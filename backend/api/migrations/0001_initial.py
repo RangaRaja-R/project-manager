@@ -54,8 +54,4 @@ class Migration(migrations.Migration):
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.AddConstraint(
-            model_name='task',
-            constraint=models.CheckConstraint(check=models.Q(('completion__gte', 0), ('completion__lte', 100)), name='check_completion_level'),
-        ),
     ]

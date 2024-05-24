@@ -12,7 +12,7 @@ function Note({ note, save, loggedIn }) {
             if (e.key === "Escape") {
                 setOpen(false);
                 save(val);
-            } else if (e.key == "n") {
+            } else if (e.shiftKey && e.key === "n") {
                 setOpen(true);
             }
         };
