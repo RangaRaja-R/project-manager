@@ -44,7 +44,7 @@ A user-friendly web application designed to empower you to organize, track, and 
 Clone the Repository:
 
 ```
-git clone https://github.com/your-username/project-name.git
+git clone https://github.com/RangaRaja-R/project-manager.git
 ```
 
 ### Set Up the Development Environment:
@@ -61,14 +61,7 @@ npm install
 Backend:
 
 -   Navigate to the backend directory `cd backend`
--   Create a virtual environment:
-
-```
-python3 -m venv venv
-```
-
--   Activate the virtual environment based on your operating system instructions
-
+-   Create a virtual environment and activate your virtual environment (optional):
 -   Install dependencies:
 
 ```

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'backend.middleware.RestrictionsMiddleware'
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -83,12 +88,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'djongo',
-        'NAME': 'project-manager',
+        'NAME': env('DB_NAME'),
         'CLIENT': {
-            # mongodb+srv://rangaraja:<password>@project-manager.dyc6go6.mongodb.net/?retryWrites=true&w=majority&appName=project-manager
-            'host': 'mongodb+srv://rangaraja:foqPOfKnJgxqxylj@project-manager.dyc6go6.mongodb.net/project-manager?retryWrites=true&w=majority',
-            'username': 'rangaraja',
-            'password': 'foqPOfKnJgxqxylj'
+            'host': env('DB_HOST'),
+            'username': env('DB_USER'),
+            'password': env('DB_PASSWORD'),
         }
     }
 }
@@ -138,5 +142,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'api.User'
 
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
