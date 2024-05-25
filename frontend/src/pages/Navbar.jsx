@@ -11,9 +11,7 @@ function Navbar({ user, dark, isDark }) {
     const location = useLocation();
     const [open, setOpen] = useState(false);
     const error = useSelector((state) => state.auth.error);
-    useEffect(() => {
-        console.log(isDark);
-    }, [isDark]);
+    useEffect(() => {}, [isDark]);
     if (location.pathname == "/sign-in" || location.pathname == "/sign-up") {
         return (
             <div

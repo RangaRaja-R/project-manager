@@ -9,6 +9,7 @@ import Logo from "../components/Logo";
 function SignIn({ loggedIn = false }) {
     const error = useSelector((state) => state.auth.error);
     const navigate = useNavigate();
+    const [showpassword, setShowpassword] = useState(false);
     const [data, setData] = useState({
         email: "",
         password: "",
@@ -41,14 +42,31 @@ function SignIn({ loggedIn = false }) {
                         setData({ ...data, email: e.target.value })
                     }
                 />
-                <input
-                    type="password"
-                    value={data.password}
-                    placeholder="Password"
-                    onChange={(e) =>
-                        setData({ ...data, password: e.target.value })
-                    }
-                />
+                <div className="pass">
+                    <input
+                        type={showpassword ? "text" : "password"}
+                        value={data.password}
+                        placeholder="Password"
+                        onChange={(e) =>
+                            setData({ ...data, password: e.target.value })
+                        }
+                    />
+                    {showpassword ? (
+                        <span
+                            className="material-symbols-outlined"
+                            onClick={() => setShowpassword(!showpassword)}
+                        >
+                            visibility
+                        </span>
+                    ) : (
+                        <span
+                            className="material-symbols-outlined"
+                            onClick={() => setShowpassword(!showpassword)}
+                        >
+                            visibility_off
+                        </span>
+                    )}
+                </div>
                 <p className="error">{error}</p>
                 <button className="primary-button" type="submit">
                     sign in

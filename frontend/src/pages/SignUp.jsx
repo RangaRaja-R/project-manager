@@ -8,6 +8,7 @@ import Logo from "../components/Logo";
 function SignUp({ loggedIn = false }) {
     const error = useSelector((state) => state.auth.error);
     const navigate = useNavigate();
+    const [showpassword, setShowpassword] = useState(false);
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -22,8 +23,8 @@ function SignUp({ loggedIn = false }) {
     useEffect(() => {
         if (loggedIn) {
             setTimeout(() => {
-                navigate(-1);
-            }, 2000);
+                navigate("home");
+            }, 500);
         }
     }, [loggedIn]);
     if (loggedIn) {
@@ -52,21 +53,36 @@ function SignUp({ loggedIn = false }) {
                     }
                     required
                 />
-                <input
-                    type="password"
-                    value={data.password}
-                    placeholder="Password"
-                    minLength={8}
-                    onChange={(e) =>
-                        setData({ ...data, password: e.target.value })
-                    }
-                    required
-                />
+                <div className="pass">
+                    <input
+                        type={showpassword ? "text" : "password"}
+                        value={data.password}
+                        placeholder="Password"
+                        onChange={(e) =>
+                            setData({ ...data, password: e.target.value })
+                        }
+                    />
+                    {showpassword ? (
+                        <span
+                            className="material-symbols-outlined"
+                            onClick={() => setShowpassword(!showpassword)}
+                        >
+                            visibility
+                        </span>
+                    ) : (
+                        <span
+                            className="material-symbols-outlined"
+                            onClick={() => setShowpassword(!showpassword)}
+                        >
+                            visibility_off
+                        </span>
+                    )}
+                </div>
                 <div className="private">
                     <input
                         type="checkbox"
                         checked={data.private}
-                        onClick={(e) => {
+                        onChange={(e) => {
                             setData({ ...data, private: !data.private });
                         }}
                     />
@@ -74,7 +90,7 @@ function SignUp({ loggedIn = false }) {
                 </div>
                 <p className="error">{error}</p>
                 <button className="primary-button" type="submit">
-                    sign in
+                    sign up
                 </button>
                 <Link to="/sign-in"> already have an account? sign in</Link>
             </form>

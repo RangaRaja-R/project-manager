@@ -1,97 +1,104 @@
-# project manager
-## features:
-- personal task scheduling
-- projects with tasks inside it
-- notes
-v2
-- chatting among team members
-- file sharing
-## Front end (ReactJS)
-not done
-- plan pages
-- design
-- features
-prime color options
--#9361A7
- -with white - #53355F
- -with black - #C5AACF
-### Pages
-- sign in
-- sign up
-- home(should say something about project with nav bar)
-- navbar
- - name of app on left
- - name of user on right(sign buttons if not logged in)
-- Note(in side, like menu bar)
-- Tasks(in seperate side-bar as my tasks, like vs-code explorer)
-- list of all project
-- project home
-- has task list, members(if group)
-## Back end (Django REST)
-not done
-- apis(80%)
-- database(cloud)
-- deployment
-done
-- user login system
-- security(JWT authentication)
+# Project Name: TaskMaster
 
-### models
-**User:**
-- Tasks
-- Notes
+## Description:
 
-**Project:**
-- Title
-- Description (optional)
-- Owner (foreign key to the User model)
-- Created date and time
-- Due date (optional)
-- Tasks(List of foreign key Task model)
-- Members (ManyToManyField to User for team members)
+A user-friendly web application designed to empower you to organize, track, and complete your personal and professional projects effectively.
 
-**Task: for each user**
-- Title
-- Description
-- Deadline (Last date to complete task)
-- completion percentage
-- owner (user who created)
+[click here](https://rangaraja-r.github.io/Project-Manager/) to view the project
 
-_+for task inside projects(common for people in project)_
-- owner (foreign key to the Project model)(optional)
-- Priority (e.g., "High," "Medium," "Low")
-- Difficulty ("high", "medium", "low", "default")
-- status (e.g., "To do," "In progress," "Done")
+### Features:
 
-_+if group project:_
-- Assigned by (foreign key to the User model)
-- Assigned user (foreign key to the User model)
+1. Project Creation and Management:
 
-_(optional)_
-- Estimated duration
-- Dependencies (ManyToManyField to Task for task dependencies)
+-   Create new projects with clear descriptions, goals, and deadlines.
+-   Organize projects using Kanban boards.
 
-**Notes:separate for users**
-- text
-- creation date
+2. Task Management:
 
-## phase 1: Planning
-- features planing - done
-## phase 2: Backend
-- models - done
-- serializers - done
-- views
-- urls
-- database
-- authentication - done
-- testing(after every steps)
-## phase 3: Frontend
-- plan pages
-- basic page
-- API test
-(ask pradosh)
-- design cards 
-- start designing
-## phase 4: deployment
-- use docker
-- plan deployment
+-   Break down projects into actionable tasks with titles, descriptions, priorities, and deadlines.
+-   Assign tasks to users (for collaborative projects).
+
+3. Progress Tracking:
+
+-   Mark tasks as completed or in progress to track overall project progress.
+
+4. Collaboration (for Team Projects):
+
+-   Invite other users to collabrate on your project.
+
+## Technologies Used:
+
+-   **Frontend:** React
+-   **Backend:** Django REST framework
+-   **Database:** MongoDB
+
+## Getting Started:
+
+### Prerequisites:
+
+-   Node.js (https://nodejs.org/)
+-   npm (Node Package Manager)
+-   Python (https://www.python.org/)
+-   pip (Python Package Installer)
+
+Clone the Repository:
+
+```
+git clone https://github.com/your-username/project-name.git
+```
+
+### Set Up the Development Environment:
+
+Frontend:
+
+-   Navigate to the frontend directory `cd frontend`
+-   Install dependencies:
+
+```
+npm install
+```
+
+Backend:
+
+-   Navigate to the backend directory `cd backend`
+-   Create a virtual environment:
+
+```
+python3 -m venv venv
+```
+
+-   Activate the virtual environment based on your operating system instructions
+
+-   Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+### Database Configuration:
+
+Configure Django to connect to your database (MongoDB or your preferred database). Refer to Django's documentation for configuration steps.
+
+### Run the Application:
+
+**Backend:**
+
+Start the Django development server(in backend directory):
+
+```
+python manage.py runserver
+```
+
+**Frontend:**
+
+Start the React development server(in frontend directory):
+
+```
+npm start
+```
+
+The frontend application should typically run at http://localhost:8080(adjust port if necessary).
+
+### Contributing:
+
+We welcome contributions to this project! Please contact r34rangaraja@gmail.com to report any issues or provide suggestions.

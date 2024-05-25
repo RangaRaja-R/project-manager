@@ -41,13 +41,14 @@ function Note({ note, save, loggedIn }) {
     }
     return (
         <div className="notes">
-            <div className="notes-options">
-                <CloseLogo
-                    onClick={() => {
-                        setOpen(false);
-                        save(val);
-                    }}
-                />
+            <div
+                className="notes-options"
+                onClick={() => {
+                    setOpen(false);
+                    save(val);
+                }}
+            >
+                <CloseLogo />
             </div>
             <textarea
                 disabled={!loggedIn}

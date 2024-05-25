@@ -64,6 +64,7 @@ export const signUp = (data) => async (dispatch) => {
         });
     }
     const response = await authService.signUp(data);
+    console.log(response);
     if (response.data.message !== "success") {
         dispatch({
             type: ERROR,
