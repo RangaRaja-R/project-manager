@@ -17,7 +17,7 @@ class RestrictionsMiddleware:
     
     def __call__(self, request):
         ip = request.META.get('REMOTE_ADDR')
-        domain = request.META.get_hosy().split(':')[0]
+        domain = request.META.get('HOST').split(':')[0]
         if ip not in ALLOWED_IPS or domain not in ALLOWED_DOMAINS:
             return HttpResponseForbidden(f'Forbidden: Access denied from {domain}({ip})')
         return self.get_response(request)
