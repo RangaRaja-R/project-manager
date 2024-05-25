@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import environ
+from .RestrictionsMiddleware import RestrictionsMiddleware
 
 env = environ.Env()
 environ.Env.read_env()
@@ -58,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'backend.middleware.RestrictionsMiddleware'
+    'backend.RestrictionsMiddleware.RestrictionsMiddleware'
 ]
 
 ROOT_URLCONF = 'backend.urls'
