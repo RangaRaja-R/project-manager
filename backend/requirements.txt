@@ -10,5 +10,5 @@ packaging==24.0
 PyJWT==2.8.0
 pymongo==3.12.3
 pytz==2024.1
-sqlparse==0.2.4
+sqlparse==0.5.0
 tzdata==2024.1
