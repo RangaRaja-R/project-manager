@@ -42,8 +42,8 @@ def login(request):
     token = jwt.encode(payload, "secret", algorithm="HS256")
 
     response = Response()
-    response.set_cookie(key="jwt", value=token, httponly=True, samesite='None', secure=True,max_age=max_age, expires=exp)
-    response.set_cookie(key="user", value="hello there", httponly=False, secure=True, samesite='None', max_age=max_age, expires=exp)
+    response.set_cookie(key="jwt", value=token, httponly=True, samesite='None', secure=True,max_age=max_age)
+    response.set_cookie(key="user", value="hello there", httponly=False, secure=True, samesite='None', max_age=max_age)
     response.data = {"message": "success"}
 
     return response
