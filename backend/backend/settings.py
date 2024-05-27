@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-dia+(r05pluhzwlz+%0@15wqqntqvd+it+it*28w$b3keqi#=v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "project-manager-jqsq.onrender.com", "project-manager.rangaraja.com"]
+ALLOWED_HOSTS = ["localhost", "project-manager-jqsq.onrender.com"]
 
 
 # Application definition
@@ -149,3 +149,5 @@ CORS_ALLOW_CREDENTIALS = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_DOMAIN = "project-manager-jqsq.onrender.com"  # Specific subdomain
+CSRF_COOKIE_DOMAIN = "project-manager-jqsq.onrender.com"
