@@ -31,6 +31,8 @@ def login(request):
         return Response({'message': 'incorrect password'})
     now = datetime.datetime.now(datetime.timezone.utc)
     exp = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=10)
+    duration = exp - now
+    max_age = int(duration.total_seconds())
     payload = {
         'id': user.id,
         'iat': now,
@@ -40,8 +42,8 @@ def login(request):
     token = jwt.encode(payload, "secret", algorithm="HS256")
 
     response = Response()
-    response.set_cookie(key="jwt", value=token, httponly=True, samesite='None', secure=True, expires=exp)
-    response.set_cookie(key="user", value="hello there", httponly=False, secure=True, samesite='None', expires=exp)
+    response.set_cookie(key="jwt", value=token, httponly=True, samesite='None', secure=True,max_age=max_age, expires=exp)
+    response.set_cookie(key="user", value="hello there", httponly=False, secure=True, samesite='None', max_age=max_age, expires=exp)
     response.data = {"message": "success"}
 
     return response
