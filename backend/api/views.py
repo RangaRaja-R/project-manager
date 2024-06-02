@@ -6,7 +6,10 @@ from .serializers import *
 from .models import *
 import jwt
 import datetime
+import environ
 
+env = environ.Env()
+SECRET_KEY = env('SECRET_KEY')
 
 @api_view(['POST'])
 def register(request):
@@ -39,7 +42,7 @@ def login(request):
         'exp': exp
     }
 
-    token = jwt.encode(payload, "secret", algorithm="HS256")
+    token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
 
     response = Response()
     response.set_cookie(key="jwt", value=token, httponly=True, samesite='None', secure=True,max_age=max_age)
@@ -66,7 +69,7 @@ def delete_user(request):
     if not token:
         return Response({'message': 'please login'})
     try:
-        payload = jwt.decode(token, "secret", algorithms=["HS256"])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
     except jwt.ExpiredSignatureError:
         return Response({'message': 'login time out'})
     user = User.objects.get(id=payload['id'])
@@ -82,7 +85,7 @@ def logged_in(request):
     if not token:
         return Response({'message': 'please login'})
     try:
-        payload = jwt.decode(token, "secret", algorithms=["HS256"])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
     except jwt.ExpiredSignatureError:
         return Response({'message': 'login timed out'})
 
