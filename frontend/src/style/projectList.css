@@ -9,6 +9,11 @@
     background-color: rgb(var(--prime));
     border-bottom: 2px solid rgb(var(--second));
 }
+.projectListTitle span {
+    vertical-align: text-bottom;
+    padding: 8px;
+    font-size: 1.8rem;
+}
 .projectList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -25,6 +30,11 @@
     .project-title {
         display: flex;
         justify-content: space-between;
+        .title span {
+            font-size: 1.2rem;
+            vertical-align: text-top;
+            padding: 4px;
+        }
         .title {
             text-transform: capitalize;
         }

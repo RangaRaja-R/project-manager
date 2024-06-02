@@ -41,6 +41,7 @@ export default function ProjectList({ loggedIn }) {
             ) : (
                 <div className="projectList">
                     {projects.projects.map((item, index) => {
+                        console.log(item);
                         return (
                             <div
                                 className="project"
@@ -50,7 +51,15 @@ export default function ProjectList({ loggedIn }) {
                                 }}
                             >
                                 <div className="project-title">
-                                    <div className="title">{item.title}</div>
+                                    <div className="title">
+                                        {item.title}
+
+                                        {item.group && (
+                                            <span className="material-symbols-outlined">
+                                                group
+                                            </span>
+                                        )}
+                                    </div>
                                     <div className="deadline">
                                         {item.deadline && item.deadline}
                                     </div>

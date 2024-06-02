@@ -23,7 +23,7 @@ function SignUp({ loggedIn = false }) {
     useEffect(() => {
         if (loggedIn) {
             setTimeout(() => {
-                navigate("home");
+                navigate("/home");
             }, 500);
         }
     }, [loggedIn]);

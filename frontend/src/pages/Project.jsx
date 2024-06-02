@@ -75,7 +75,12 @@ export default function Project({ close }) {
         <>
             {project && (
                 <div className="projectListTitle">
-                    <h1>{project.title}</h1>
+                    <h1>
+                        {project.title}
+                        {project.group && (
+                            <span class="material-symbols-outlined">group</span>
+                        )}
+                    </h1>
                     <div className="projectListTitle--add">
                         <button
                             className="secondary-button"

@@ -1,26 +1,16 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    width: calc(100vw - 20px);
+    z-index: 5;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: rgb(var(--second));
+    background-color: rgb(var(--first));
     border-bottom: solid 1px rgba(var(--second), 0.5);
-    .projectTitle {
-        .sidebar__logo {
-            cursor: pointer;
-        }
-        display: flex;
-        align-items: center;
-        .logo {
-            width: 50px;
-            height: 50px;
-        }
-        a {
-            text-decoration: none;
-            color: rgb(var(--second));
-            font: 36px bolder;
-        }
-    }
+    scroll-snap-stop: always;
     .sign {
         display: flex;
         align-items: center;
@@ -37,11 +27,34 @@
         gap: 16px;
         #user-name {
             text-decoration: none;
-            font: 20px bolder;
+            font-size: 20px;
+            font-weight: bolder;
             padding-right: 12px;
             &::first-letter {
                 text-transform: capitalize;
             }
         }
+    }
+}
+
+.projectTitle {
+    display: flex;
+    align-items: center;
+}
+.sidebar__logo {
+    cursor: pointer;
+}
+.navbar .logo {
+    width: 50px;
+    height: 50px;
+}
+.projectTitle a {
+    text-decoration: none;
+    color: rgb(var(--second));
+    font: 36px bolder;
+}
+@media (max-width: 768px) {
+    .projectTitle a {
+        font-size: 28px;
     }
 }

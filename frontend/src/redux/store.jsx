@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./reducers/rootReducer";
 import taskReducer from "./reducers/taskReducer";
 import authReducer from "./reducers/authReducer";
 import noteReducer from "./reducers/noteReducer";

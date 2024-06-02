@@ -15,13 +15,19 @@ function SideBar({ setOpen, open, user }) {
         setOpen();
     };
     const signOut = () => {
+        setOpen();
         dispatch({
             type: CLEAR,
         });
         dispatch(mainOut());
     };
     return (
-        <div className="sidebar" style={{ left: open ? 0 : "" }}>
+        <div
+            className="sidebar"
+            style={{
+                left: open ? 0 : "",
+            }}
+        >
             <div className="sidebar__options">
                 {options.map((option, index) => (
                     <div

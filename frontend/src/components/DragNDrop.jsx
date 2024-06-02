@@ -248,8 +248,15 @@ export default function DragNDrop({ tasks = [], newTask, users = [] }) {
                     delete
                 </div>
                 <div className="project-task-options">
-                    <button onClick={newTask}>add Task</button>
-                    <button onClick={() => saveChanges()}>save changes</button>
+                    <button className="tertiary-button" onClick={newTask}>
+                        add Task
+                    </button>
+                    <button
+                        className="tertiary-button"
+                        onClick={() => saveChanges()}
+                    >
+                        save changes
+                    </button>
                 </div>
             </div>
         </>

@@ -32,9 +32,10 @@ function App() {
     };
     useEffect(() => {
         let isMounted = true;
+        window.scrollTo(0, 0);
         if (
             window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme)").matches
+            window.matchMedia("(prefers-color-scheme: dark)").matches
         ) {
             if (isMounted) {
                 setDark(true);
@@ -61,7 +62,11 @@ function App() {
                 }}
             />
             <Routes>
-                <Route index path="/home" element={<Home />} />
+                <Route
+                    index
+                    path="/home"
+                    element={<Home loggedIn={user != null} />}
+                />
                 <Route
                     path="/sign-in"
                     element={<SignIn loggedIn={user != null} />}

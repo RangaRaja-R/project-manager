@@ -2,22 +2,25 @@ import axios from "axios";
 
 class projectService {
     constructor() {
-        this.base = "https://project-manager-jqsq.onrender.com/project";
+        this.base = "http://localhost:8000/project";
+        this.axios = axios.create({
+            withCredentials: true,
+        });
     }
     getProjects(id) {
-        return axios.get(`${this.base}/get-owned?owner=${id}`);
+        return this.axios.get(`${this.base}/get-owned?owner=${id}`);
     }
     getProject(id) {
-        return axios.get(`${this.base}/get?id=${id}`);
+        return this.axios.get(`${this.base}/get?id=${id}`);
     }
     createProject(project) {
-        return axios.post(`${this.base}/create`, project);
+        return this.axios.post(`${this.base}/create`, project);
     }
     deleteProject(id) {
-        return axios.delete(`${this.base}/delete?id=${id}`);
+        return this.axios.delete(`${this.base}/delete?id=${id}`);
     }
     updateProject(project) {
-        return axios.put(`${this.base}/update`, project);
+        return this.axios.put(`${this.base}/update`, project);
     }
 }
 

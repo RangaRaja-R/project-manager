@@ -7,11 +7,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+html {
+    scroll-snap-type: y mandatory;
+}
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    --prime: 189, 151, 207;
+    --prime: 160, 64, 206;
     --first: 227, 227, 225;
     --second: 0, 0, 0;
     --high: 255, 55, 95;
@@ -21,15 +30,9 @@ body {
     color: rgb(var(--second));
     height: 100vh;
 }
-#root {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
 
 .dark {
-    --prime: 160, 64, 206;
+    --prime: 176, 110, 207;
     --first: 0, 0, 0;
     --second: 227, 227, 225;
 }
@@ -69,6 +72,7 @@ button {
 
 a {
     color: rgb(var(--second));
+    text-decoration: none;
 }
 h1 {
     text-transform: capitalize;
@@ -137,4 +141,14 @@ select {
     background-color: rgba(var(--prime), 0.2);
     border-radius: 5px;
     width: 100%;
+}
+
+.notes + div {
+    padding-top: 75px;
+}
+
+@media (max-width: 768px) {
+    button {
+        font-size: 15px;
+    }
 }

@@ -22,7 +22,7 @@ function SignIn({ loggedIn = false }) {
     useEffect(() => {
         if (loggedIn) {
             setTimeout(() => {
-                navigate(-1);
+                navigate("/home");
             }, 1000);
         }
     }, [loggedIn]);

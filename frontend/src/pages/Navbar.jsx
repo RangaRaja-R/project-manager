@@ -16,6 +16,7 @@ function Navbar({ user, dark, isDark }) {
         return (
             <div
                 className="navbar"
+                id="navbar"
                 style={{ position: "fixed", border: "none" }}
                 onClick={() => dark()}
             >
@@ -29,7 +30,7 @@ function Navbar({ user, dark, isDark }) {
     }
     return (
         <div className={open ? "top" : "top over"}>
-            <nav className="navbar">
+            <nav className="navbar" id="navbar">
                 <div className="projectTitle">
                     <div
                         className="sidebar__logo"
@@ -38,7 +39,7 @@ function Navbar({ user, dark, isDark }) {
                         &#9776;
                     </div>
                     <Logo />
-                    <Link to="">TaskMaster{error}</Link>
+                    <Link to="">TaskMaster</Link>
                 </div>
                 {user != null ? (
                     <div className="user">

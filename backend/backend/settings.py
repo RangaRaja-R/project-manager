@@ -146,8 +146,6 @@ AUTH_USER_MODEL = 'api.User'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_DOMAIN = "project-manager-jqsq.onrender.com"  # Specific subdomain
-CSRF_COOKIE_DOMAIN = "project-manager-jqsq.onrender.com"
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
