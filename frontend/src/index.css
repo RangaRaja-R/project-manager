@@ -148,7 +148,8 @@ select {
 }
 
 @media (max-width: 768px) {
+    /* dynamic font-size */
     button {
-        font-size: 15px;
+        font-size: clamp(0.8rem, 2.5vw, 2rem);
     }
 }

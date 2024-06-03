@@ -1,6 +1,7 @@
 import "../style/home.css";
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
+import Macbook from "../components/Macbook";
 
 function Home({ loggedIn }) {
     return (
@@ -25,26 +26,32 @@ function Home({ loggedIn }) {
             <div className="sect">
                 <div className="content">
                     <Reveal>
-                        <h1>Manage Your Projects</h1>
+                        <h1 className="title">Manage Your Projects</h1>
                     </Reveal>
                 </div>
-                <div className="image"></div>
+                <Reveal late>
+                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                </Reveal>
             </div>
             <div className="sect">
-                <div className="image"></div>
+                <Reveal late>
+                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                </Reveal>
                 <div className="content">
                     <Reveal>
-                        <h1>Manage your Daily tasks</h1>
+                        <h1 className="title">Manage your Daily tasks</h1>
                     </Reveal>
                 </div>
             </div>
             <div className="sect">
                 <div className="content">
                     <Reveal>
-                        <h1>Collabrate with your team</h1>
+                        <h1 className="title">Collabrate with your team</h1>
                     </Reveal>
                 </div>
-                <div className="image"></div>
+                <Reveal late>
+                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                </Reveal>
             </div>
         </div>
     );
