@@ -4,11 +4,12 @@ from rest_framework.decorators import api_view
 from .models import Note
 from .serializers import NoteSerializer
 from api.models import User
+from api.views import user_id
 
 
 @api_view(['GET'])
 def get_note(request):
-    owner = request.query_params.get('owner')
+    owner = user_id(request)
     note = Note.objects.filter(owner=owner).first()
     if not note:
         note = Note.objects.create(owner=User.objects.get(id=owner), content='')
@@ -18,7 +19,8 @@ def get_note(request):
 
 @api_view(['POST', 'PUT'])
 def edit_note(request):
-    note = Note.objects.filter(owner=request.data['owner']).first()
+    owner = user_id(request)
+    note = Note.objects.filter(owner=owner).first()
     serializer = NoteSerializer(instance=note, data=request.data, partial=True)
     serializer.is_valid(raise_exception=True)
     serializer.save()

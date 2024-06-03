@@ -11,6 +11,11 @@ import environ
 env = environ.Env()
 SECRET_KEY = env('SECRET_KEY')
 
+def user_id(request):
+    token = request.COOKIES.get('jwt')
+    payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+    return payload['id']
+
 @api_view(['POST'])
 def register(request):
     serializer = UserSerializer(data=request.data)

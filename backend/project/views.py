@@ -2,16 +2,14 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import *
-
-
-@api_view(['GET', 'POST', 'DELETE', 'PUT'])
-def blank(request):
-    return Response(request)
+from api.views import user_id
 
 
 @api_view(['POST'])
 def create(request):
-    serializer = ProjectSerializer(data=request.data)
+    data = request.data
+    data['owner'] = user_id(request=request)
+    serializer = ProjectSerializer(data=data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)
@@ -19,7 +17,7 @@ def create(request):
 
 @api_view(['GET'])
 def get_project(request):
-    project = Project.objects.filter(id=request.query_params.get('id')).first()
+    project = Project.objects.filter(id=request.query_params.get('id'), owner=user_id(request)).first()
     if not project:
         return Response({"message": "Project not found"})
     serializer = ProjectSerializer(instance=project)
@@ -28,8 +26,9 @@ def get_project(request):
 
 @api_view(['GET'])
 def get_all_project(request):
-    owner_projects = Project.objects.filter(owner=request.query_params.get('owner'))
-    member_projects = Project.objects.filter(members__id=request.query_params.get('owner'))
+    owner = user_id(request)
+    owner_projects = Project.objects.filter(owner=owner)
+    member_projects = Project.objects.filter(members__id=owner)
 
     # Combine both queries using the OR operator
     projects = owner_projects | member_projects
