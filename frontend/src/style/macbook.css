@@ -20,7 +20,9 @@
     border: 8px solid #090909;
     border-bottom: 20px solid #090909;
     border-radius: 8px;
-    background-size: cover;
+    background-size: contain;
+    background-position-y: 5%;
+    background-repeat: no-repeat;
 }
 
 .notch {

@@ -30,12 +30,12 @@ function Home({ loggedIn }) {
                     </Reveal>
                 </div>
                 <Reveal late>
-                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                    <Macbook src={"public/project.png"} />
                 </Reveal>
             </div>
             <div className="sect">
                 <Reveal late>
-                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                    <Macbook src={"public/daily.png"} />
                 </Reveal>
                 <div className="content">
                     <Reveal>
@@ -50,7 +50,7 @@ function Home({ loggedIn }) {
                     </Reveal>
                 </div>
                 <Reveal late>
-                    <Macbook id="1x5gtNIviiGI-0Y42v8_nR75l0D7cIp3L" />
+                    <Macbook src={"public/group.png"} />
                 </Reveal>
             </div>
         </div>

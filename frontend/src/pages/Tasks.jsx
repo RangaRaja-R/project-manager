@@ -21,7 +21,6 @@ function Tasks({ loggedIn }) {
     });
     const handleCreate = (e) => {
         e.preventDefault();
-        console.log(data);
         if (update) {
             dispatch(updateTask(data)).then(() => {
                 dispatch(getTasks());
@@ -31,6 +30,12 @@ function Tasks({ loggedIn }) {
             dispatch(createTask(data));
         }
         setOpen(false);
+        setData({
+            task: "",
+            description: "",
+            completion: 0,
+            deadline: "",
+        });
     };
     useEffect(() => {
         if (loggedIn) {

@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks, createTask } from "../redux/actions/projectTaskAction";
 import { useNavigate } from "react-router-dom";
-import { getAll } from "../redux/actions/authAction";
+import { getAll, user } from "../redux/actions/authAction";
 import DragNDrop from "../components/DragNDrop";
 import "../style/project.css";
 
 export default function Project({ close }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const users = useSelector((state) => state.auth.all);
+    const [users, setUsers] = useState(useSelector((state) => state.auth.all));
     const project = useSelector((state) => state.project.one);
     const tasks = useSelector((state) => state.projectTask.tasks);
     const [open, setOpen] = useState(false);
@@ -55,14 +55,16 @@ export default function Project({ close }) {
         dispatch(getTasks(project.id));
         dispatch(getAll());
         const handleKeyPress = (e) => {
-            console.log(e.key);
             if (e.key === "Escape") {
                 close();
             }
         };
-
+        const memUsers = users.filter(
+            (item) =>
+                project.members.includes(item.id) || project.owner == item.id
+        );
+        setUsers(memUsers);
         document.addEventListener("keydown", handleKeyPress);
-
         return () => {
             document.removeEventListener("keydown", handleKeyPress);
         };
@@ -78,7 +80,9 @@ export default function Project({ close }) {
                     <h1>
                         {project.title}
                         {project.group && (
-                            <span class="material-symbols-outlined">group</span>
+                            <span className="material-symbols-outlined">
+                                group
+                            </span>
                         )}
                     </h1>
                     <div className="projectListTitle--add">
@@ -130,7 +134,7 @@ export default function Project({ close }) {
                         {additional && (
                             <>
                                 <div className="element">
-                                    <label for="priority">Priority</label>
+                                    <label htmlFor="priority">Priority</label>
                                     <select
                                         id="priority"
                                         defaultValue="default"

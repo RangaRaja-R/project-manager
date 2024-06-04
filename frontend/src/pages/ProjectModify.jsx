@@ -54,6 +54,7 @@ export default function ProjectModify() {
                 .filter(Boolean);
             setMembers(newMembers);
         }
+        console.log(users);
     }, []);
     return (
         <div className="project-modify">
@@ -98,41 +99,40 @@ export default function ProjectModify() {
                 </div>
                 {data.group ? (
                     <>
-                        <div>
-                            <select
-                                defaultValue={"Select"}
-                                onChange={(e) => setSelected(e.target.value)}
-                            >
-                                <option disabled>Select</option>
-                                {users.map((item, index) => {
-                                    if (item.name != "myself")
-                                        return (
-                                            <option key={index} value={index}>
-                                                {item.name} - {item.email}
-                                            </option>
-                                        );
-                                })}
-                            </select>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    const user = users[selected];
-                                    if (
-                                        selected &&
-                                        (!data.members.includes(user.id) ||
-                                            !members.includes(user.name))
-                                    ) {
-                                        setData({
-                                            ...data,
-                                            members: [...data.members, user.id],
-                                        });
-                                        setMembers([...members, user.name]);
-                                    }
-                                }}
-                            >
-                                add member
-                            </button>
-                        </div>
+                        <select
+                            defaultValue={"Select"}
+                            onChange={(e) => setSelected(e.target.value)}
+                        >
+                            <option disabled>Select</option>
+                            {users.map((item, index) => {
+                                if (item.name != "myself")
+                                    return (
+                                        <option key={index} value={index}>
+                                            {item.name} - {item.email}
+                                        </option>
+                                    );
+                            })}
+                        </select>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                const user = users[selected];
+                                if (
+                                    selected &&
+                                    (!data.members.includes(user.id) ||
+                                        !members.includes(user.name))
+                                ) {
+                                    setData({
+                                        ...data,
+                                        members: [...data.members, user.id],
+                                    });
+                                    setMembers([...members, user.name]);
+                                }
+                            }}
+                        >
+                            add member
+                        </button>
+
                         <ul>
                             members:
                             {members.length == 0 ? " None" : ""}

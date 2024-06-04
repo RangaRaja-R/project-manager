@@ -11,7 +11,7 @@ export const ERROR = "ERROR";
 export const getAll = () => async (dispatch, getState) => {
     const user = getState().auth.user;
     const response = await authService.getAll(user.id);
-    const users = response.data;
+    const users = response.data.users;
     dispatch({
         type: USERS,
         payload: users.map((item) => {

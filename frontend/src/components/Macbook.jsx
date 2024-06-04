@@ -1,12 +1,12 @@
 import "../style/macbook.css";
-export default function Macbook({ id }) {
+export default function Macbook({ src }) {
     return (
         <div className="device-container">
             <div className="macbook">
                 <div
                     className="screen"
                     style={{
-                        backgroundImage: `url(https://drive.google.com/thumbnail?id=${id}&sz=w1000)`,
+                        backgroundImage: `url(${src})`,
                     }}
                 >
                     <div className="notch">
