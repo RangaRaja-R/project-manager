@@ -98,12 +98,12 @@ def logged_in(request):
     serializer = UserSerializer(user)
     return Response({'user': serializer.data, 'message': 'success'})
 
-
+# only non private users
 @api_view(['GET'])
 def all(request):
-    users = User.objects.filter(private=False)
+    users = User.objects.all()
     serializer = UserSerializer(users, many=True)
-    return Response(serializer.data)
+    return Response({'users': serializer.data, 'message': 'success'})
 
 
 # Task Views

@@ -3,8 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50vw;
-    height: 100vh;
 }
 
 .macbook {
@@ -84,4 +82,10 @@
     bottom: 0;
     z-index: 1;
     border-radius: 10px 10px 0px 0px;
+}
+
+@media (max-width: 768px) {
+    .macbook {
+        width: clamp(300px, 70%, 80vh);
+    }
 }

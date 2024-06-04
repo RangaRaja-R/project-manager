@@ -62,6 +62,7 @@
     }
     .sect {
         scroll-snap-stop: normal;
+        display: flex;
         flex-direction: column;
         justify-content: center;
     }

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { signIn } from "../redux/actions/authAction";
+import {
+    signIn,
+    user as isLoggedIn,
+    getAll,
+} from "../redux/actions/authAction";
+import { getNote } from "../redux/actions/noteAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -17,13 +22,16 @@ function SignIn({ loggedIn = false }) {
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(signIn(data));
+        dispatch(signIn(data)).then(() => {
+            dispatch(isLoggedIn()).then(() => {
+                dispatch(getNote());
+            });
+            dispatch(getAll());
+        });
     };
     useEffect(() => {
         if (loggedIn) {
-            setTimeout(() => {
-                navigate("/home");
-            }, 1000);
+            navigate("/home");
         }
     }, [loggedIn]);
     if (loggedIn) {

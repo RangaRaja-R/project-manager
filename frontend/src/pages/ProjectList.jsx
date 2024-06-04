@@ -41,7 +41,6 @@ export default function ProjectList({ loggedIn }) {
             ) : (
                 <div className="projectList">
                     {projects.projects.map((item, index) => {
-                        console.log(item);
                         return (
                             <div
                                 className="project"

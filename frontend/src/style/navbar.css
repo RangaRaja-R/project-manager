@@ -55,6 +55,13 @@
 }
 @media (max-width: 768px) {
     .projectTitle a {
-        font-size: clamp(1.2rem, 5vw, 5vw);
+        font-size: clamp(1rem, 5vw, 5vw);
+    }
+    #user_name {
+        font-size: clamp(1rem, 5vw, 5vw);
+    }
+    .navbar {
+        padding: 0 16px;
+        height: min-content;
     }
 }

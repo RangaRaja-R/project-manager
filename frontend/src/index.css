@@ -122,6 +122,7 @@ textarea {
     background-color: rgba(var(--prime), 0.2);
     padding: 10px;
     font-size: 0.9rem;
+    color: rgb(var(--second));
     &:focus {
         outline: none;
     }
