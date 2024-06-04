@@ -78,16 +78,6 @@ function SignUp({ loggedIn = false }) {
                         </span>
                     )}
                 </div>
-                <div className="private">
-                    <input
-                        type="checkbox"
-                        checked={data.private}
-                        onChange={(e) => {
-                            setData({ ...data, private: !data.private });
-                        }}
-                    />
-                    <p>keep your account private?</p>
-                </div>
                 <p className="error">{error}</p>
                 <button className="primary-button" type="submit">
                     sign up
